@@ -1,0 +1,12 @@
+{
+	"name": "com.eu4ng.category.package-name",
+	"displayName": "Package Name",
+	"version": "0.0.0",
+	"unity": "2021.3",
+	"author": {
+		"name": "Eu4ng",
+		"email": "eu4ng97@gmail.com",
+		"url": "https://github.com/Eu4ng"
+	},
+	"description": "Description for package"
+}
