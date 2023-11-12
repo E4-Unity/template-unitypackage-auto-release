@@ -1,0 +1,26 @@
+name: Release For UnityPackage
+on:
+  push:
+    branches:
+    - master
+jobs:
+  release:
+    permissions:
+      contents: write
+      issues: write
+    name: release
+    runs-on: self-hosted
+    if: ${{contains(github.event.head_commit.message, 'feat') || contains(github.event.head_commit.message, 'fix') || contains(github.event.head_commit.message, 'perf')}}
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+    - name: Release
+      uses: cycjimmy/semantic-release-action@v3
+      with:
+        extra_plugins: |
+          @semantic-release/changelog
+          @semantic-release/git
+        branch: master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
